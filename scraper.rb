@@ -20,7 +20,7 @@ result = JSON.parse(page.body)
 
 result.each do |a|
   date_received = parse_date(a["rec_dte"])
-  if date_received >= Date.today - 30
+  if !date_received.nil? && date_received >= Date.today - 30
     record = {
       "council_reference" => a["fmt_acc2"],
       "address" => a["prm_adr"] + ", NSW",
